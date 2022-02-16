@@ -7,7 +7,7 @@ class Meme extends React.Component {
     return (
       <section>
         <h2>{ name }</h2>
-        <img src={ url } alt={ name } />
+        <img src={ url } alt={ name } width="400px"/>
       </section>
     )
   }
