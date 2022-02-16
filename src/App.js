@@ -1,11 +1,11 @@
-import Quote from './Quote';
+import Meme from './Meme';
 
-import quotes from './data';
+import memes from './data';
 
 function App() {
   return (
     <>
-      { quotes.map(({ quote, author }) => <Quote quote={ quote } author={ author } />) }
+      { memes.map(({ id, name, url }) => <Meme key={ id } name={ name } url={ url } />) }
     </>
   );
 }
