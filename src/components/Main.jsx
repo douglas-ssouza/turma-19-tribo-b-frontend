@@ -1,26 +1,15 @@
 import React from 'react';
 
-import blocos from '../data/blocos';
+import Bloco from './Bloco';
 
-const displayContent = ({ title, content }) => {
-  return (
-    <div key={ title }>
-      <h3>{ title }</h3>
-      <ul>
-        {
-          content.map((c) => <li key={ c }>{ c }</li>)
-        }
-      </ul>
-    </div>
-  )
-}
+import blocos from '../data/blocos';
 
 class Main extends React.Component {
   render() {
     return (
       <main>
         {
-          blocos.map(displayContent)
+          blocos.map((b) => <Bloco key={ b.title } title={ b.title } content={ b.content }/>)
         }
       </main>
     );
