@@ -2,27 +2,29 @@ import React from 'react';
 
 import blocos from '../data/blocos';
 
-const createContentSection = ({ title, content }) => {
+const displayContent = ({ title, content }) => {
   return (
-    <section>
-      <h2>{ title }</h2>
+    <div key={ title }>
+      <h3>{ title }</h3>
       <ul>
-        { content.map((c, index) => (
-          <li key={ index }>{ c }</li>
-        )) }
+        {
+          content.map((c) => <li key={ c }>{ c }</li>)
+        }
       </ul>
-    </section>
-  );
-};
+    </div>
+  )
+}
 
 class Main extends React.Component {
   render() {
     return (
       <main>
-        { blocos.map((f) => createContentSection(f)) }
+        {
+          blocos.map(displayContent)
+        }
       </main>
     );
   }
-};
+}
 
 export default Main;

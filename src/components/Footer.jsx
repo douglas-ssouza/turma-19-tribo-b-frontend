@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Component }  from 'react';
 
-class Footer extends React.Component {
+class Footer extends Component {
   render() {
     return (
       <footer>
-        <h2>Footer</h2>
-        <p>Desenvolvido por Turma 19 - Tribo B</p>
+        <h2>Turma 19</h2>
+        <p>Desenvolvido com React e Amor</p>
       </footer>
-    );
+    )
   }
-};
+}
 
 export default Footer;
