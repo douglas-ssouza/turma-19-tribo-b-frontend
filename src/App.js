@@ -1,13 +1,16 @@
-import Meme from './Meme';
+import React from 'react';
+import Meme from './components/Meme';
 
 import memes from './data';
 
-function App() {
-  return (
-    <>
-      { memes.map(({ id, name, url }) => <Meme key={ id } name={ name } url={ url } />) }
-    </>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <>
+        { memes.map((meme) => <Meme key={ meme.id } meme={ meme } />) }
+      </>
+    );
+  }
 }
 
 export default App;
