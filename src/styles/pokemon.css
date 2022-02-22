@@ -1,0 +1,7 @@
+.pokemon {
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 35%;
+  margin: 35px auto;
+  text-align: center;
+}

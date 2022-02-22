@@ -1,7 +1,13 @@
-function App() {
-  return (
-    <h1>Turma 19 - Tribo B</h1>
-  );
+import React from 'react';
+
+import Pokedex from './components/Pokedex';
+
+class App extends React.Component {
+  render() {
+    return (
+      <Pokedex />
+    );
+  }
 }
 
 export default App;
