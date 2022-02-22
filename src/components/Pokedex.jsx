@@ -5,43 +5,33 @@ import Pokemon from './Pokemon';
 import '../styles/pokedex.css'
 
 class Pokedex extends React.Component {
-  constructor(props) {
-    super(props);
-
-    const { pokemons } = this.props;
+  constructor() {
+    super();
 
     this.state = {
-      name: '',
-      pokemons,
+      index: 0,
     };
 
-    this.filterByName = this.filterByName.bind(this);
+    this.goToNextPokemon = this.goToNextPokemon.bind(this);
   }
 
-  filterByName(e) {
+  goToNextPokemon() {
     const { pokemons } = this.props;
+    const lastIndex = pokemons.length - 1;
 
-    this.setState(
-      { name: e.target.value },
-      () => this.setState((prevState) => ({
-        pokemons: pokemons.filter((p) => p.name.toLowerCase().includes(prevState.name)),
-      })),
-    );
+    this.setState((prevState) => ({
+      index: prevState.index === lastIndex ? 0 : prevState.index + 1, 
+    }));
   }
 
   render() {
-    const { name, pokemons } = this.state;
+    const { pokemons } = this.props;
+    const { index } = this.state;
 
     return (
       <div className='pokedex'>
-        <input
-          type="text"
-          className="name-input"
-          placeholder="Digite o nome do pokemon"
-          value={ name }
-          onInput={ this.filterByName }
-        />
-        { pokemons.map((pokemon) => <Pokemon key={ pokemon.id } pokemon={ pokemon } />) }
+        <Pokemon key={ pokemons[index].id } pokemon={ pokemons[index] } />
+        <button type="button" onClick={ this.goToNextPokemon }>Próximo</button>
       </div>
     )
   }
