@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Select from './Select';
+import Input from './Input';
 
 class Form extends React.Component {
   constructor() {
@@ -33,20 +34,30 @@ class Form extends React.Component {
       <form>
         <fieldset>
           <legend>Pessoal</legend>
-          <label htmlFor="input-name">
-            Nome:
-            <input type="text" id="input-name" name="name" value={ name } onChange={ this.handleChange }/>
-          </label>
+          <Input />
+          <Input
+            handleChange={ this.handleChange }
+            type="text"
+            name="name"
+            value={ name }
+            text="Nome"
+          />
           <br />
-          <label htmlFor="input-email">
-            Email:
-            <input type="email" id="input-email" name="email" value={ email } onChange={ this.handleChange } />
-          </label>
+          <Input 
+            handleChange={ this.handleChange }
+            type="email"
+            name="email"
+            value={ email }
+            text="Email"
+          />
           <br />
-          <label htmlFor="input-age">
-            Idade:
-            <input type="number" id='input-age' name="age" value={ age } onChange={ this.handleChange } />
-          </label>
+          <Input 
+            handleChange={ this.handleChange }
+            type="number"
+            name="age"
+            value={ age }
+            text="Idade"
+          />
           <br />
         </fieldset>
         <fieldset>
