@@ -30,6 +30,11 @@ class Form extends React.Component {
     });
   }
 
+  checkEmail(email) {
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return regex.test(email);
+  }
+
   render() {
     const { name, email, age, description, estate, openToEmails } = this.state;
 
@@ -37,7 +42,6 @@ class Form extends React.Component {
       <form>
         <fieldset>
           <legend>Pessoal</legend>
-          <Input />
           <Input
             handleChange={ this.handleChange }
             type="text"
@@ -100,12 +104,10 @@ class Form extends React.Component {
           Full-Stack
         </label>
 
-        <button type="submit">Enviar</button>
+        <button type="submit" disabled={ !this.checkEmail(email) }>Enviar</button>
       </form>
     );
   }
 }
 
 export default Form;
-
-// /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
