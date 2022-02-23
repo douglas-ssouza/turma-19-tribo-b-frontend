@@ -14,12 +14,15 @@ class Form extends React.Component {
       description: '',
       estate: '',
       openToEmails: false,
+      stack: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target }) {
+    console.log(target.value);
+
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
@@ -83,6 +86,20 @@ class Form extends React.Component {
             Deseja receber emails irritantes
           </label>
         </fieldset>
+
+        <label htmlFor="front">
+          <input type="radio" id="front" name="stack" value="front" onChange={ this.handleChange } />
+          Front-end (que é muito melhor)
+        </label>
+        <label htmlFor="back">
+          <input type="radio" id="back" name="stack" value="back" onChange={ this.handleChange } />
+          Back-end
+        </label>
+        <label htmlFor="full">
+          <input type="radio" id="full" name="stack" value="full" onChange={ this.handleChange } />
+          Full-Stack
+        </label>
+
         <button type="submit">Enviar</button>
       </form>
     );
