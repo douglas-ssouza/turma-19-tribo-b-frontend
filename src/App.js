@@ -1,7 +1,11 @@
-function App() {
-  return (
-    <h1>Turma 19 - Tribo B</h1>
-  );
+import React from 'react';
+
+import User from './User';
+
+class App extends React.Component {
+  render() {
+    return <User />
+  }
 }
 
 export default App;
