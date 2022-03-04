@@ -20,7 +20,6 @@ class User extends React.Component {
 
   // 4
   shouldComponentUpdate(_nextProps, nextState) {
-    const { user } = this.state;
     const { user: { registered: { age } } } = nextState;
     console.log(`Proximo: ${age}`);
     return age >= 10;
