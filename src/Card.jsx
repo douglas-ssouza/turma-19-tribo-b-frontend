@@ -37,7 +37,7 @@ class Card extends React.Component {
   async fetchCard() {
     const response = await fetch('http://deckofcardsapi.com/api/deck/new/draw/?count=1');
     const { cards } = await response.json();
-    const [card] = cards;
+    const card = cards[0];
     console.log(card);
     this.setState({ card, isLoading: false });
   }
