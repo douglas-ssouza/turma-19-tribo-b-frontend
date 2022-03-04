@@ -19,6 +19,12 @@ class Card extends React.Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
+    const { card } = nextState;
+    
+    if (this.state.card) {
+      return this.state.card.suit !== card.suit;
+    }
+
     return true;
   };
 
@@ -43,8 +49,8 @@ class Card extends React.Component {
       isLoading
         ? <div>Loading...</div>
         : <div>
-          <h2>{ `${card.value} of ${card.suit}` }</h2>
-          <img src={ card.image } alt={ `${card.value} of ${card.suit}` } />
+          <h2>{ `${card.value} OF ${card.suit}` }</h2>
+          <img src={ card.image } alt={ `${card.value} OF ${card.suit}` } />
           <button type="button" onClick={ this.fetchCard }>Next Card</button>
         </div>
     );
