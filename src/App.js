@@ -1,10 +1,10 @@
 import React from 'react';
 
-import User from './User';
+import Card from './Card';
 
 class App extends React.Component {
   render() {
-    return <User />
+    return <Card />
   }
 }
 
