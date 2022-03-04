@@ -7,6 +7,7 @@ class User extends React.Component {
 
     this.state = {
       user: null,
+      isLoading: true,
     };
 
     this.fetchUser = this.fetchUser.bind(this);
@@ -18,10 +19,17 @@ class User extends React.Component {
   }
 
   // 4
-  shouldComponentUpdate(nextProps, nextState) { return true; }
+  shouldComponentUpdate(_nextProps, nextState) {
+    const { user } = this.state;
+    const { user: { registered: { age } } } = nextState;
+    console.log(`Proximo: ${age}`);
+    return age >= 10;
+  }
 
   // 5
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(_prevProps, prevState) {
+    console.log(`Anterior: ${prevState.user.registered.age}`);
+  }
 
   // 6
   componentWillUnmount() {}
@@ -31,16 +39,27 @@ class User extends React.Component {
     const response = await fetch(url);
     const { results } = await response.json();
     const [user] = results; // results[0]
-    this.setState({ user });
+    this.setState({ user, isLoading: false });
   }
 
   // 2
   render() {
-    const { user } = this.state;
+    const { user, isLoading } = this.state;
 
-    return (user
-      ? <div><h2>{ user.name.first }</h2></div>
-      : <div>User not found 404</div>
+    return (
+      <div>
+        {
+          isLoading
+            ? <div>Loading...</div>
+            : (
+              <div>
+                <h2>{ `${user.name.first} ${user.name.last}, ${user.registered.age}` }</h2>
+                <p>{ user.email }</p>
+              </div>
+            )
+        }
+        <button type="button" onClick={ this.fetchUser }>Next User</button>
+      </div>
     )
   }
 }
