@@ -5,55 +5,37 @@ class User extends React.Component {
     super(props);
 
     this.state = {
-      user: undefined,
+      user: null,
       isLoading: true,
     }
 
-    this.getNewUser = this.getNewUser.bind(this);
-
-    console.log('constructor');
+    this.fetchUser = this.fetchUser.bind(this);
   }
 
   componentDidMount() {
-    console.log('didMount');
-    this.getNewUser();
+    this.fetchUser();
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('shouldUpdate');
     const { user: { registered: { age } } } = nextState;
     return age > 10;
   };
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('didUpdate');
   };
 
   componentWillUnmount() {
-    console.log('willUnmount');
   }
 
   async fetchUser() {
     const response = await fetch('https://api.randomuser.me/');
     const { results } = await response.json();
     const [user] = results
-    return user;
-  }
-
-  async getNewUser() {
-    const newUser = await this.fetchUser();
-
-    setTimeout(() => {
-      this.setState({ user: newUser, isLoading: false });
-    }, 1000);
+    this.setState({ user, isLoading: false });
   }
 
   render() {
-    console.log('render');
-
     const { user, isLoading } = this.state;
-
-    console.log(this.state);
 
     return (
       isLoading
@@ -61,7 +43,7 @@ class User extends React.Component {
         : <div>
           <h2>{ `${user.name.first} ${user.name.last}, ${ user.registered.age }` }</h2>
           <p>{ user.email }</p>
-          <button type="button" onClick={ this.getNewUser }>Next User</button>
+          <button type="button" onClick={ this.fetchUser }>Next User</button>
         </div>
     );
   }
