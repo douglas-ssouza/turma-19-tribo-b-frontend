@@ -27,7 +27,7 @@ class User extends React.Component {
 
   // 5
   componentDidUpdate(_prevProps, prevState) {
-    console.log(`Anterior: ${prevState.user.registered.age}`);
+    console.log(`Anterior: ${prevState.user}`);
   }
 
   // 6
