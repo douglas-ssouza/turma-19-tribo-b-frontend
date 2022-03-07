@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from '../components/Header';
 
@@ -15,11 +16,16 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-
+    this.fetchCharacters();
   }
 
   async fetchCharacters() {
-
+    const response = await fetch('https://rickandmortyapi.com/api/character');
+    const { results } = await response.json();
+    this.setState({
+      characters: results,
+      isLoading: false,
+    });
   }
   
   render() {
@@ -28,6 +34,17 @@ class Home extends React.Component {
     return (
       <>
         <Header />
+        {
+          isLoading
+            ? <h2>Carregando...</h2>
+            : characters.map(({ id, name, image }) => (
+              <div key={ id }>
+                <h2>{ name }</h2>
+                <img src={ image } alt={ name } />
+                <Link to={ `/character/${id}` }>Mais detalhes</Link>
+              </div>
+            ))
+        }
       </>
     );
   }
