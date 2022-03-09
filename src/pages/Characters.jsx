@@ -46,7 +46,7 @@ class Characters extends React.Component {
     )
   }
 
-  async goToPrevPage() {
+  goToPrevPage() {
     const { page } = this.state;
     const newPage = page === FIRST_PAGE ? LAST_PAGE : page - 1;
 
