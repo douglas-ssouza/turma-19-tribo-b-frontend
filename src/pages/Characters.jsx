@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
+import Header from '../components/Header';
 import Loading from '../components/Loading';
 
 class Characters extends React.Component {
@@ -11,10 +13,12 @@ class Characters extends React.Component {
       characters: null,
       page: 0
     }
+
+    this.fetchCharacters();
   }
 
   componentDidMount() {
-
+    this.fetchCharacters();
   }
 
   async fetchCharacters() {
@@ -24,7 +28,25 @@ class Characters extends React.Component {
   }
 
   render() {
-    return <h1>Characters</h1>
+    const { isLoading, characters } = this.state;
+
+    return (
+      <>
+        <Header />
+        {
+          isLoading
+            ? <Loading />
+            : characters.map(({ id, name, image }) => (
+              <div key={ id }>
+                <h2>{ name }</h2>
+                <img src={ image } alt={ name } />
+                <br />
+                <Link to={ `/characters/${id}` }>Detalhes</Link>
+              </div>
+            ))
+        }
+      </>
+    )
   }
 }
 
