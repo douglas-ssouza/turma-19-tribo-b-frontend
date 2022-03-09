@@ -8,9 +8,9 @@ function routes() {
     <Router>
       <Switch>
         <Route exact path="/" component={ Login } />
-        {/* <Route path="/chracters/:id" component={} />
+        {/* <Route path="/chracters/:id" component={} /> */}
         <Route path="/characters" component={} />
-        <Route path="/episodes/:id" component={} />
+        {/* <Route path="/episodes/:id" component={} />
         <Route path="/episodes" component={} />
         <Route path="/about" component={} /> */}
       </Switch>
