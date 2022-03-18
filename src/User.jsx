@@ -18,21 +18,6 @@ class User extends React.Component {
     this.fetchUser();
   }
 
-  // 4
-  shouldComponentUpdate(_nextProps, nextState) {
-    const { user: { registered: { age } } } = nextState;
-    console.log(`Proximo: ${age}`);
-    return age >= 10;
-  }
-
-  // 5
-  componentDidUpdate(_prevProps, prevState) {
-    console.log(`Anterior: ${prevState.user}`);
-  }
-
-  // 6
-  componentWillUnmount() {}
-
   async fetchUser() {
     const url = 'https://api.randomuser.me/';
     const response = await fetch(url);
@@ -52,7 +37,7 @@ class User extends React.Component {
             ? <div>Loading...</div>
             : (
               <div>
-                <h2>{ `${user.name.first} ${user.name.last}, ${user.registered.age}` }</h2>
+                <h2>{ `${user.name.first} ${user.name.last}, ${user.dob.age}` }</h2>
                 <p>{ user.email }</p>
               </div>
             )
