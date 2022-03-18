@@ -18,27 +18,10 @@ class Card extends React.Component {
     this.fetchCard();
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    const { card } = nextState;
-    
-    if (this.state.card) {
-      return this.state.card.suit !== card.suit;
-    }
-
-    return true;
-  };
-
-  componentDidUpdate(prevProps, prevState) {
-  };
-
-  componentWillUnmount() {
-  }
-
   async fetchCard() {
     const response = await fetch('http://deckofcardsapi.com/api/deck/new/draw/?count=1');
     const { cards } = await response.json();
     const card = cards[0];
-    console.log(card);
     this.setState({ card, isLoading: false });
   }
 
