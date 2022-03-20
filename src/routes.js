@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Login from './pages/Logins';
+import Login from './pages/Login';
 import Characters from './pages/Characters';
 import CharacterDetails from './pages/CharacterDetails';
 import Episodes from './pages/Episodes';

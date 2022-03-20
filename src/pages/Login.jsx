@@ -17,7 +17,9 @@ class Login extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
+
     const { history } = this.props;
     history.push('/characters');
   }
@@ -29,22 +31,22 @@ class Login extends React.Component {
       <form onSubmit={ this.handleSubmit }>
         <label htmlFor="input-email">
           <input
-            data-testid="input-email"
             type="email"
             id="input-email"
             name="email"
             value={ email }
+            placeholder="Digite seu email"
             onChange={ this.handleChange }
           />
         </label>
         <br />
         <label htmlFor="input-password">
           <input
-            data-testid="input-password"
             type="password"
             id="input-password"
             name="password"
             value={ password }
+            placeholder="Digite sua senha"
             onChange={ this.handleChange }
           />
         </label>
