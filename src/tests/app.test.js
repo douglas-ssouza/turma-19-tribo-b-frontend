@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import Login from '../pages/Login';
 import App from '../App';
 
-const WRONG_EMAIL = 'emailerrado';
 const EMAIL = 'email@email.com';
 const PASSWORD = '123456';
 
