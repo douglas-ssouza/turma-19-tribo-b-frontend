@@ -73,7 +73,7 @@ class Characters extends React.Component {
               <div>
                 {
                   characters.map(({ id, name, image }) => (
-                    <div key={ id }>
+                    <div key={ id } data-testid="character-container">
                       <h2>{ name }</h2>
                       <img src={ image } alt={ name } />
                       <br />
