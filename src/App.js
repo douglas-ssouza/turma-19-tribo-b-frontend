@@ -1,10 +1,15 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 import routes from './routes';
 
 class App extends React.Component {
   render() {
-    return routes();
+    return (
+      <BrowserRouter>
+        { routes() }
+      </BrowserRouter>
+    );
   }
 }
 

@@ -11,13 +11,13 @@ class Header extends React.Component {
         <div>
           <ul>
             <li>
-              <Link to="/characters">Characters</Link>
+              <Link data-testid="characters-link" to="/characters">Characters</Link>
             </li>
             <li>
-              <Link to="/episodes">Episodes</Link>
+              <Link data-testid="episodes-link" to="/episodes">Episodes</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link data-testid="about-link" to="/about">About</Link>
             </li>
           </ul>
         </div>

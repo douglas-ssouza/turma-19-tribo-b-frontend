@@ -72,12 +72,12 @@ class Characters extends React.Component {
             : (
               <div>
                 {
-                  characters.map(({ id, name, image }) => (
+                  characters.map(({ id, name, image }, index) => (
                     <div key={ id } data-testid="character-container">
                       <h2>{ name }</h2>
                       <img src={ image } alt={ name } />
                       <br />
-                      <Link to={ `/characters/${id}` }>Detalhes</Link>
+                      <Link data-testid={ `details-link` } to={ `/characters/${id}`}>Detalhes</Link>
                     </div>
                   ))
                 }

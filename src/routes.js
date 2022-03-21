@@ -11,7 +11,6 @@ import NotFound from './pages/NotFound';
 
 function routes() {
   return (
-    <Router>
       <Switch>
         <Route exact path="/" component={ Login } />
         <Route path="/characters/:id" component={ CharacterDetails } />
@@ -21,7 +20,6 @@ function routes() {
         <Route path="/about" component={ About } />
         <Route path="" component={ NotFound } />
       </Switch>
-    </Router>
   )
 }
 
