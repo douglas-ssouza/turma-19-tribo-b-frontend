@@ -17,7 +17,9 @@ class Login extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
+
     const { history } = this.props;
     history.push('/characters');
   }
