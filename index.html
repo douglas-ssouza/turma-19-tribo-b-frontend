@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/5.0.0-alpha.0/redux.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  
+  <main>
+    <span>Likes:</span>
+    <span id="likes">0</span>
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+    <button id="add_10">Mais 10</button>
+    <input type="number" id="input_value">
+    <button id="add_value">Adicionar</button>
+    <button id="clear">Limpar</button>
+  </main>
+
+  <main>
+    <span>Dislikes:</span>
+    <span id="dislikes">0</span>
+    <button id="increment2">+</button>
+    <button id="decrement2">-</button>
+    <button id="add_102">Mais 10</button>
+    <input type="number" id="input_value2">
+    <button id="add_value2">Adicionar</button>
+    <button id="clear2">Limpar</button>
+  </main>
+
+  <script>
+    // STORE REDUCER ACTIONS
+
+    const INITIAL_STATE = {
+      likes: 0,
+      dislikes: 0,
+    }
+
+    const INCREMENT_LIKES = 'INCREMENT_LIKES';
+    const DECREMENT_LIKES = 'DECREMENT_LIKES';
+    const ADD_10_LIKES = 'ADD_10_LIKES';
+    const ADD_VALUE_LIKES = 'ADD_VALUE_LIKES';
+    const CLEAR_LIKES = 'CLEAR_LIKES';
+
+    const INCREMENT_DISLIKES = 'INCREMENT_DISLIKES';
+    const DECREMENT_DISLIKES = 'DECREMENT_DISLIKES';
+    const ADD_10_DISLIKES = 'ADD_10_DISLIKES';
+    const ADD_VALUE_DISLIKES = 'ADD_VALUE_DISLIKES';
+    const CLEAR_DISLIKES = 'CLEAR_DISLIKES';
+
+    // action
+    const incrementLikes = () => ({ type: INCREMENT_LIKES });
+    const decrementLikes = () => ({ type: DECREMENT_LIKES });
+    const add10Likes = () => ({ type: ADD_10_LIKES });
+    const addValueLikes = (value) => ({ type: ADD_VALUE_LIKES, value });
+    const clearLikes = () => ({ type: CLEAR_LIKES });
+
+    const incrementDislikes = () => ({ type: INCREMENT_DISLIKES });
+    const decrementDislikes = () => ({ type: DECREMENT_DISLIKES });
+    const add10Dislikes = () => ({ type: ADD_10_DISLIKES });
+    const addValueDislikes = (value) => ({ type: ADD_VALUE_DISLIKES, value });
+    const clearDislikes = () => ({ type: CLEAR_DISLIKES });
+
+    // reducer
+    const reducer = (state = INITIAL_STATE, action) => {
+      switch(action.type) {
+        case INCREMENT_LIKES:
+          return {
+            ...state,
+            likes: state.likes + 1,
+          };
+        case INCREMENT_DISLIKES:
+          return {
+            ...state,
+            dislikes: state.dislikes + 1,
+          };
+        case DECREMENT_LIKES:
+          return {
+            ...state,
+            likes: state.likes - 1,
+          };
+        case DECREMENT_DISLIKES:
+          return {
+            ...state,
+            dislikes: state.dislikes - 1,
+          };
+        case ADD_10_LIKES:
+          return {
+            ...state,
+            likes: state.likes + 10,
+          };
+        case ADD_10_DISLIKES:
+          return {
+            ...state,
+            dislikes: state.dislikes + 10,
+          };
+        case ADD_VALUE_LIKES:
+          return {
+            ...state,
+            likes: state.likes + action.value,
+          };
+        case ADD_VALUE_DISLIKES:
+          return {
+            ...state,
+            dislikes: state.dislikes + action.value,
+          };
+        case CLEAR_LIKES:
+          return {
+            ...state,
+            likes: 0,
+          };
+        case CLEAR_DISLIKES:
+          return {
+            ...state,
+            dislikes: 0,
+          };
+        default:
+          return state;
+      }
+    }
+
+    // store
+    const store = Redux.createStore(reducer);
+
+    const likes = document.querySelector('#likes');
+    const btnIncrement = document.querySelector('#increment');
+    const btnDecrement = document.querySelector('#decrement');
+    const btnAdd10 = document.querySelector('#add_10');
+    const input = document.querySelector('#input_value');
+    const btnAddValue = document.querySelector('#add_value');
+    const btnClear = document.querySelector('#clear');
+
+    const dislikes = document.querySelector('#dislikes');
+    const btnIncrement2 = document.querySelector('#increment2');
+    const btnDecrement2 = document.querySelector('#decrement2');
+    const btnAdd102 = document.querySelector('#add_102');
+    const input2 = document.querySelector('#input_value2');
+    const btnAddValue2 = document.querySelector('#add_value2');
+    const btnClear2 = document.querySelector('#clear2');
+
+
+    btnIncrement.addEventListener('click', () => {
+      store.dispatch(incrementLikes());
+    });
+    btnDecrement.addEventListener('click', () => {
+      store.dispatch(decrementLikes());
+    });
+    btnAdd10.addEventListener('click', () => {
+      store.dispatch(add10Likes());
+    });
+    btnAddValue.addEventListener('click', () => {
+      const valor = Number(input.value);
+      store.dispatch(addValueLikes(valor));
+      input.value = '';
+    });
+    btnClear.addEventListener('click', () => {
+      store.dispatch(clearLikes());
+    });
+
+    btnIncrement2.addEventListener('click', () => {
+      store.dispatch(incrementDislikes());
+    });
+    btnDecrement2.addEventListener('click', () => {
+      store.dispatch(decrementDislikes());
+    });
+    btnAdd102.addEventListener('click', () => {
+      store.dispatch(add10Dislikes());
+    });
+    btnAddValue2.addEventListener('click', () => {
+      const valor = Number(input2.value);
+      store.dispatch(addValueDislikes(valor));
+      input.value = '';
+    });
+    btnClear2.addEventListener('click', () => {
+      store.dispatch(clearDislikes());
+    });
+
+    store.subscribe(() => {
+      const { likes: l, dislikes: d } = store.getState();
+      likes.innerText = l;
+      dislikes.innerText = d;
+    });
+  </script>
+
+</body>
+</html>
