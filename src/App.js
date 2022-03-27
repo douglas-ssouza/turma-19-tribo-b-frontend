@@ -1,14 +1,14 @@
 import React from 'react';
 
 import Pokedex from './components/Pokedex';
-import List from './components/List';
+import Buttons from './components/Buttons';
 
 class App extends React.Component {
   render() {
     return (
       <>
         <Pokedex />
-        <List />
+        <Buttons />
       </>
     );
   }

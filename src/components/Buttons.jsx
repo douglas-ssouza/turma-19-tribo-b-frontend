@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { filterByType, resetFilter } from '../redux/actions';
 
-class List extends React.Component {
+class Buttons extends React.Component {
   render() {
     const { types, filter, reset } = this.props;
 
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch) => ({
   reset: () => dispatch(resetFilter()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(mapStateToProps, mapDispatchToProps)(Buttons);
