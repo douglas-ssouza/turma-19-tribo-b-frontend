@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { nextPokemon, prevPokemon } from '../redux/actions';
-
 import Pokemon from './Pokemon';
+
+import { nextPokemon, prevPokemon } from '../redux/actions';
 
 class Pokedex extends React.Component {
   render() {
@@ -20,9 +20,9 @@ class Pokedex extends React.Component {
   }
 }
 
-const mapDispatchtoProps = (dispatch) => ({
-  goToNextPokemon: () => dispatch(nextPokemon()),
+const mapDispatchToProps = (dispatch) => ({
   goToPrevPokemon: () => dispatch(prevPokemon()),
+  goToNextPokemon: () => dispatch(nextPokemon()),
 });
 
-export default connect(null, mapDispatchtoProps)(Pokedex);
+export default connect(null, mapDispatchToProps)(Pokedex);

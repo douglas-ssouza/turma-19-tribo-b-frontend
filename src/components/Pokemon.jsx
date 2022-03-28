@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 
 class Pokemon extends React.Component {
   render() {
-    const { pokemon: { image, name, type, averageWeight } } = this.props;
+    const { pokemon: { name, type, averageWeight, image } } = this.props;
 
     return (
       <div>
         <img src={ image } alt={ `${name} sprite` } />
         <h2>{ name }</h2>
         <h3>{ type }</h3>
-        <p>{ `Average weight: ${averageWeight.value}${averageWeight.measurementUnit}` }</p>
+        <p>{ `Average Weight: ${averageWeight.value}${averageWeight.measurementUnit}` }</p>
       </div>
     );
   }
