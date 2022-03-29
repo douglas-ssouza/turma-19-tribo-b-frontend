@@ -24,8 +24,8 @@ class Form extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     
-    const { submitForm } = this.props;
-    submitForm(this.state);
+    const { submitFormAction } = this.props;
+    submitFormAction(this.state);
   }
 
   render() {
@@ -76,7 +76,7 @@ class Form extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  submitForm: (info) => dispatch(submitForm(info)),
+  submitFormAction: (info) => dispatch(submitForm(info)),
 });
 
 export default connect(null, mapDispatchToProps)(Form);

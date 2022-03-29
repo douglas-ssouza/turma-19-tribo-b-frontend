@@ -1,7 +1,8 @@
 import { SUBMIT } from "../actions";
 
 const INITIAL_STATE = {
-  cadastro: { name: '', email: '', cpf: '' },
+  // cadastro: { name: '', email: '', cpf: '' },
+  cadastros: [],
 };
 
 function formReducer(state = INITIAL_STATE, action) {
@@ -9,7 +10,8 @@ function formReducer(state = INITIAL_STATE, action) {
   case SUBMIT:
     return {
       ...state,
-      cadastro: action.payload,
+      // cadastro: action.payload,
+      cadastros: [...state.cadastros, action.payload],
     }
   default:
     return state;
