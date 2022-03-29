@@ -1,7 +1,13 @@
-function App() {
-  return (
-    <h1>Turma 19 - Tribo B</h1>
-  );
+import React from 'react';
+
+import Routes from './routes';
+
+class App extends React.Component {
+  render() {
+    return (
+      <Routes />
+    );
+  }
 }
 
 export default App;
