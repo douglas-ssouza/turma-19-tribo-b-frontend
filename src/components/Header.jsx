@@ -6,7 +6,7 @@ class Header extends React.Component {
     return (
       <header>
         <h1>Forms com Redux</h1>
-        <Link to="/form">Form</Link>
+        <Link to="/">Form</Link>
         <br />
         <Link to="/list">List</Link>
       </header>

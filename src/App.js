@@ -5,7 +5,7 @@ import Routes from './routes';
 class App extends React.Component {
   render() {
     return (
-      <Routes />
+        <Routes />
     );
   }
 }
