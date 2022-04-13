@@ -7,19 +7,23 @@ import pokemonContext from './context/pokemonContext';
 
 import pokemons from './data';
 
+const INITIAL_STATE = {
+  pokemons,
+  selectedPokemon: pokemons[0],
+  index: 0,
+  types: [...new Set(pokemons.map(({ type }) => type))],
+};
+
 class App extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      pokemons,
-      selectedPokemon: pokemons[0],
-      index: 0,
-      types: [...new Set(pokemons.map(({ type }) => type))],
-    };
+    this.state = INITIAL_STATE;
 
     this.goToPrevPokemon = this.goToPrevPokemon.bind(this);
     this.goToNextPokemon = this.goToNextPokemon.bind(this);
+    this.filterPokemons = this.filterPokemons.bind(this);
+    this.resetFilter = this.resetFilter.bind(this);
   }
 
   goToPrevPokemon() {
@@ -42,17 +46,33 @@ class App extends React.Component {
     });
   }
 
+  filterPokemons(filter) {
+    const filteredPokemons = pokemons.filter(({ type }) => type === filter);
+
+    this.setState({
+      pokemons: filteredPokemons,
+      selectedPokemon: filteredPokemons[0],
+      index: 0,
+    });
+  }
+
+  resetFilter() {
+    this.setState(INITIAL_STATE);
+  }
+
   render() {
     const contextValue = {
       ...this.state,
       goToNextPokemon: this.goToNextPokemon,
       goToPrevPokemon: this.goToPrevPokemon,
+      filterPokemons: this.filterPokemons,
+      resetFilter: this.resetFilter,
     };
 
     return (
       <pokemonContext.Provider value={ contextValue }>
         <Pokedex />
-        {/* <Buttons /> */}
+        <Buttons />
       </pokemonContext.Provider>
     );
   }
