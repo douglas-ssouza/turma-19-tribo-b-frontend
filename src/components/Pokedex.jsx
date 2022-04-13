@@ -13,8 +13,8 @@ class Pokedex extends React.Component {
       <main>
         <h1>Pokedex</h1>
         <Pokemon />
-        <button type="button" onClick={ goToPrevPokemon }>Previous</button>
-        <button type="button" onClick={ goToNextPokemon }>Next</button>
+        {/* <button type="button" onClick={ goToPrevPokemon }>Previous</button>
+        <button type="button" onClick={ goToNextPokemon }>Next</button> */}
       </main>
     );
   }
