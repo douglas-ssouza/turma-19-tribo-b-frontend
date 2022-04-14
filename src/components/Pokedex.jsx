@@ -1,27 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Pokemon from './Pokemon';
 
 import pokemonContext from '../context/pokemonContext';
 
-class Pokedex extends React.Component {
-  render() {
-    return (
-      <pokemonContext.Consumer>
-        {
-          ({ goToNextPokemon, goToPrevPokemon }) => (
-            <main>
-              <h1>Pokedex</h1>
-              
-              <Pokemon />
-              <button type="button" onClick={ goToPrevPokemon }>Previous</button>
-              <button type="button" onClick={ goToNextPokemon }>Next</button>
-            </main>
-          )
-        }  
-      </pokemonContext.Consumer>
-    );
-  }
+function Pokedex() {
+  const { goToPrevPokemon, goToNextPokemon } = useContext(pokemonContext);
+
+  return (
+    <main>
+      <h1>Pokedex</h1>
+      <Pokemon />
+      <button type="button" onClick={ goToPrevPokemon }>Previous</button>
+      <button type="button" onClick={ goToNextPokemon }>Next</button>
+    </main>
+  );
 }
 
 export default Pokedex;
